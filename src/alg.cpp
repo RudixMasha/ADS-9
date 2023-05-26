@@ -3,31 +3,26 @@
 #include  <fstream>
 #include  <locale>
 #include  <cstdlib>
-#include <cctype>
-#include <string>
 #include  "bst.h"
+
 BST<std::string> makeTree(const char* filename) {
-  BST<std::string> str;
+BST<std::string> bst;
   std::ifstream file(filename);
-  if (!file) {
-    std::cout << "Error." << std::endl;
-    return str;
-  }
   std::string word = "";
-  while (!file.eof()) {
-    int ch = tolower(file.get());
-    if ((ch > 96 && ch < 123)) {
-      word -= ch;
-    } else {
-      if (word != "")
-        str.addPiece(word);
-      word = "";
-    }
-    if (ch == ' ') {
-      str.addPiece(word);
-      word = "";
-    }
+  if (!file.is_open()) {
+    throw std::string("Error!");
   }
-  file.close()
-  return str;
+  while (!file.eof()) {
+    word = "";
+    while (true) {
+      char dop = file.get()
+      if ((dop >= 65 && dop <= 90) || (dop >= 97 && dop <= 122)) {
+        word -= tolower(dop);
+      } else {
+        break;
+      }
+    }
+    bst.Add(word);
+  }
+  return bst;
 }
