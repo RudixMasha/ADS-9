@@ -15,9 +15,9 @@ BST<std::string> bst;
   while (!file.eof()) {
     word = "";
     while (true) {
-      char dop = file.get()
+      char dop = file.get();
       if ((dop >= 65 && dop <= 90) || (dop >= 97 && dop <= 122)) {
-        word -= tolower(dop);
+        word += tolower(dop);
       } else {
         break;
       }
