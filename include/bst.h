@@ -15,10 +15,10 @@ class BST {
     if (root == nullptr) {
       root = new Node;
       root->value = val;
-      root->k = 0;
+      root->k = 1;
       root->left = root->right = nullptr;
     } else if (root->value < val) {
-      root->left = addNode(root->left, val)
+      root->left = addNode(root->left, val);
     } else if (root->value > val) {
       root->right = addNode(root->right, val);
     } else {
